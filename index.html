@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Honey Home — น้ำผึ้งแท้จากธรรมชาติ">
+  <title>Honey Home | น้ำผึ้งแท้จากธรรมชาติ</title>
+  <style>
+    :root {
+      --cream: #fbf7ef;
+      --paper: #fffdf8;
+      --brown: #5c4030;
+      --brown-2: #80634c;
+      --gold: #c28b3c;
+      --gold-light: #f2dfbd;
+      --line: #eadfce;
+      --muted: #887b6d;
+      --green: #68785a;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; background: var(--cream); color: var(--brown);
+      font-family: "Noto Sans Thai", "Tahoma", sans-serif; line-height: 1.6;
+    }
+    button, input { font: inherit; }
+    button { cursor: pointer; }
+    .topbar {
+      background: #5c4030; color: #fff8ec; text-align: center;
+      padding: 8px 16px; font-size: 13px; letter-spacing: .3px;
+    }
+    header {
+      max-width: 1160px; margin: auto; padding: 20px 24px;
+      display: flex; align-items: center; justify-content: space-between; gap: 20px;
+    }
+    .brand { display: flex; align-items: center; gap: 11px; text-decoration: none; color: var(--brown); }
+    .brand-mark {
+      width: 43px; height: 43px; border-radius: 50%; background: var(--gold-light);
+      display: grid; place-items: center; font-size: 23px;
+    }
+    .brand-name { font-size: 21px; font-weight: 800; letter-spacing: .4px; }
+    nav { display: flex; align-items: center; gap: 27px; }
+    nav a { color: var(--brown-2); text-decoration: none; font-size: 14px; }
+    nav a:hover { color: var(--gold); }
+    .cart-button {
+      border: 1px solid var(--line); background: var(--paper); color: var(--brown);
+      border-radius: 999px; padding: 10px 16px; font-weight: 700;
+    }
+    .cart-count { display: inline-grid; place-items: center; margin-left: 5px;
+      width: 22px; height: 22px; border-radius: 50%; background: var(--gold); color: white; font-size: 12px; }
+    .hero {
+      max-width: 1160px; margin: 8px auto 0; padding: 58px 6.5%;
+      background: #f1e5d1; border-radius: 26px; min-height: 365px;
+      display: grid; grid-template-columns: 1.15fr .85fr; align-items: center; gap: 24px;
+      overflow: hidden; position: relative;
+    }
+    .eyebrow { color: var(--green); font-size: 13px; font-weight: 800; letter-spacing: 1.4px; }
+    h1 { font-size: clamp(32px, 5vw, 53px); line-height: 1.2; margin: 13px 0 15px; }
+    .hero p { color: #786451; max-width: 470px; margin: 0 0 25px; }
+    .primary {
+      display: inline-block; border: 0; border-radius: 999px; padding: 13px 24px;
+      color: white; background: var(--brown); text-decoration: none; font-weight: 700;
+      transition: transform .2s, background .2s;
+    }
+    .primary:hover { background: #76533b; transform: translateY(-2px); }
+    .hero-art { min-height: 250px; display: grid; place-items: center; position: relative; }
+    .sun { width: 245px; height: 245px; border-radius: 50%; background: #e4c58f; position: absolute; }
+    .honey-jar { width: 190px; height: 220px; position: relative; z-index: 1; filter: drop-shadow(0 17px 13px #80634c33); }
+    .jar-cap { width: 112px; height: 24px; background: #80634c; border-radius: 8px 8px 3px 3px; margin: auto; }
+    .jar-neck { width: 95px; height: 17px; background: #e9d6b6; margin: auto; border: 2px solid #c9ad80; }
+    .jar-body { width: 170px; height: 158px; margin: auto; border-radius: 23px 23px 35px 35px;
+      background: linear-gradient(90deg,#b87525,#e8b64e 28%,#f3d27d 53%,#c9822b);
+      border: 4px solid #f7e7c4; display: grid; place-items: center; }
+    .jar-label { background: #fff7e7; border: 1px solid #d8bd8d; width: 122px; padding: 12px 5px; text-align: center; color: #68482c; }
+    .jar-label strong { display: block; font-family: Georgia,serif; font-size: 19px; }
+    .jar-label small { font-size: 9px; letter-spacing: 1px; }
+    .section { max-width: 1160px; margin: 66px auto; padding: 0 24px; }
+    .section-head { text-align: center; margin-bottom: 28px; }
+    .section-head h2 { font-size: 29px; margin: 5px 0; }
+    .section-head p { color: var(--muted); margin: 0; font-size: 14px; }
+    .products { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 24px; max-width: 790px; margin: auto; }
+    .product-card {
+      background: var(--paper); border: 1px solid var(--line); border-radius: 20px;
+      padding: 17px; transition: transform .2s, box-shadow .2s;
+    }
+    .product-card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px #5c403014; }
+    .product-visual {
+      min-height: 210px; border-radius: 14px; background: #f4ecdf;
+      display: grid; place-items: center; position: relative; overflow: hidden;
+    }
+    .product-visual .honey-jar { transform: scale(.78); }
+    .tag { position: absolute; top: 13px; left: 13px; background: #e6eddc; color: #59694a;
+      border-radius: 99px; padding: 5px 10px; font-size: 11px; font-weight: 700; z-index: 2; }
+    .product-info { padding: 16px 4px 3px; }
+    .sku { color: var(--muted); font-size: 11px; letter-spacing: .7px; }
+    .product-info h3 { font-size: 18px; margin: 5px 0 4px; }
+    .desc { color: var(--muted); font-size: 13px; min-height: 42px; margin: 0 0 12px; }
+    .buy-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .price { color: #a66b22; font-weight: 800; font-size: 20px; }
+    .add-btn { border: 0; background: var(--brown); color: white; padding: 10px 15px; border-radius: 99px; font-size: 13px; font-weight: 700; }
+    .add-btn:hover { background: #806047; }
+    .features { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+    .feature { background: #f2e9dc; border-radius: 16px; padding: 20px; text-align: center; }
+    .feature span { font-size: 25px; }
+    .feature strong { display: block; margin: 7px 0 2px; }
+    .feature small { color: var(--muted); }
+    footer { background: #5c4030; color: #f8eddd; text-align: center; padding: 30px 18px; font-size: 13px; }
+    footer strong { font-size: 18px; }
+    .modal-backdrop { position: fixed; inset: 0; background: #21170fb0; display: none; z-index: 10; padding: 18px; }
+    .modal-backdrop.show { display: grid; place-items: center; }
+    .modal { width: min(100%,510px); max-height: 90vh; overflow: auto; background: var(--paper);
+      border-radius: 20px; padding: 24px; box-shadow: 0 20px 70px #0003; }
+    .modal-head { display: flex; justify-content: space-between; align-items: center; }
+    .modal h2 { margin: 0; }
+    .close { border: 0; background: #f1e8dc; border-radius: 50%; width: 34px; height: 34px; color: var(--brown); font-size: 20px; }
+    .cart-items { margin: 18px 0; }
+    .cart-line { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+    .cart-line small { display: block; color: var(--muted); }
+    .qty { display: flex; align-items: center; gap: 9px; }
+    .qty button { border: 1px solid var(--line); background: white; border-radius: 7px; width: 27px; height: 27px; }
+    .total { display: flex; justify-content: space-between; font-weight: 800; font-size: 18px; padding: 12px 0 18px; }
+    .checkout { display: grid; gap: 10px; }
+    .checkout label { font-size: 13px; font-weight: 700; }
+    .checkout input { width: 100%; margin-top: 4px; padding: 11px 12px; border: 1px solid var(--line); border-radius: 10px; background: white; color: var(--brown); }
+    .checkout .primary { width: 100%; }
+    .notice { color: var(--muted); font-size: 11px; margin-top: 10px; }
+    .empty { color: var(--muted); text-align: center; padding: 24px 0; }
+    @media (max-width:700px) {
+      header { padding: 15px 18px; } nav { display: none; }
+      .hero { margin: 5px 14px 0; padding: 35px 25px 20px; grid-template-columns: 1fr; text-align: center; }
+      .hero p { margin-left: auto; margin-right: auto; }
+      .hero-art { min-height: 220px; }
+      .section { margin: 48px auto; padding: 0 16px; }
+      .products { gap: 13px; }
+      .product-card { padding: 10px; }
+      .product-visual { min-height: 155px; }
+      .product-visual .honey-jar { transform: scale(.62); }
+      .product-info h3 { font-size: 15px; }
+      .desc { font-size: 12px; min-height: 56px; }
+      .buy-row { align-items: flex-start; flex-direction: column; }
+      .add-btn { width: 100%; }
+      .features { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">🍯 น้ำผึ้งแท้ คัดสรรคุณภาพ ส่งความหวานถึงบ้านคุณ</div>
+  <header>
+    <a class="brand" href="#">
+      <span class="brand-mark">🐝</span>
+      <span class="brand-name">HONEY HOME</span>
+    </a>
+    <nav><a href="#home">หน้าแรก</a><a href="#products">สินค้า</a><a href="#about">เกี่ยวกับเรา</a></nav>
+    <button class="cart-button" onclick="openCart()">ตะกร้าสินค้า <span class="cart-count" id="cartCount">0</span></button>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div>
+        <div class="eyebrow">PURE • NATURAL • LOCAL</div>
+        <h1>เติมความหวาน<br>จากธรรมชาติ</h1>
+        <p>เลือกสัมผัสรสชาติของน้ำผึ้งแท้ หอมละมุน คัดสรรอย่างใส่ใจ เหมาะสำหรับเติมความอร่อยในทุกวัน</p>
+        <a class="primary" href="#products">เลือกชมสินค้า</a>
+      </div>
+      <div class="hero-art" aria-label="ภาพประกอบขวดน้ำผึ้ง">
+        <div class="sun"></div>
+        <div class="honey-jar"><div class="jar-cap"></div><div class="jar-neck"></div><div class="jar-body"><div class="jar-label"><small>PURE NATURAL</small><strong>Honey</strong><small>HONEY HOME</small></div></div></div>
+      </div>
+    </section>
+
+    <section class="section" id="products">
+      <div class="section-head">
+        <div class="eyebrow">OUR PRODUCTS</div>
+        <h2>สินค้าแนะนำ</h2>
+        <p>น้ำผึ้ง 2 รสชาติ คัดสรรมาเพื่อคุณ</p>
+      </div>
+      <div class="products">
+        <article class="product-card">
+          <div class="product-visual">
+            <span class="tag">ขายดี</span>
+            <div class="honey-jar"><div class="jar-cap"></div><div class="jar-neck"></div><div class="jar-body"><div class="jar-label"><small>WILDFLOWER</small><strong>Honey</strong><small>500 g</small></div></div></div>
+          </div>
+          <div class="product-info">
+            <div class="sku">SKU: HN-001</div>
+            <h3>น้ำผึ้งดอกไม้ป่า 500 กรัม</h3>
+            <p class="desc">น้ำผึ้งสีทอง กลิ่นหอมละมุน รสหวานเป็นเอกลักษณ์</p>
+            <div class="buy-row"><span class="price">฿159</span><button class="add-btn" onclick="addToCart('HN-001')">+ เพิ่มลงตะกร้า</button></div>
+          </div>
+        </article>
+        <article class="product-card">
+          <div class="product-visual">
+            <span class="tag">แนะนำ</span>
+            <div class="honey-jar"><div class="jar-cap"></div><div class="jar-neck"></div><div class="jar-body" style="background:linear-gradient(90deg,#92501d,#c17a2e 30%,#e4aa4b 55%,#9b551e)"><div class="jar-label"><small>LONGAN</small><strong>Honey</strong><small>500 g</small></div></div></div>
+          </div>
+          <div class="product-info">
+            <div class="sku">SKU: HN-002</div>
+            <h3>น้ำผึ้งดอกลำไย 500 กรัม</h3>
+            <p class="desc">กลิ่นหอมเฉพาะตัว รสหวานกลมกล่อม เหมาะกับเครื่องดื่ม</p>
+            <div class="buy-row"><span class="price">฿189</span><button class="add-btn" onclick="addToCart('HN-002')">+ เพิ่มลงตะกร้า</button></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="section-head"><div class="eyebrow">WHY HONEY HOME</div><h2>ความหวานที่ใส่ใจในทุกรายละเอียด</h2></div>
+      <div class="features">
+        <div class="feature"><span>🌼</span><strong>คัดสรรอย่างใส่ใจ</strong><small>เลือกน้ำผึ้งคุณภาพสำหรับทุกวัน</small></div>
+        <div class="feature"><span>🍯</span><strong>มี 2 แบบให้เลือก</strong><small>เลือกความหอมหวานได้ตามชอบ</small></div>
+        <div class="feature"><span>📦</span><strong>เตรียมจัดส่งอย่างดี</strong><small>แพ็กสินค้าอย่างระมัดระวัง</small></div>
+      </div>
+    </section>
+  </main>
+
+  <footer><strong>🐝 HONEY HOME</strong><br>น้ำผึ้งแท้จากธรรมชาติ เติมความหวานให้ทุกวัน<br><span>© 2026 Honey Home — ร้านค้าตัวอย่างสำหรับงานเรียน</span></footer>
+
+  <div class="modal-backdrop" id="cartModal" onclick="backdropClose(event)">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
+      <div class="modal-head"><h2 id="cartTitle">ตะกร้าสินค้า</h2><button class="close" onclick="closeCart()" aria-label="ปิด">×</button></div>
+      <div class="cart-items" id="cartItems"></div>
+      <div class="total"><span>ยอดรวม</span><span id="cartTotal">฿0</span></div>
+      <form class="checkout" onsubmit="placeOrder(event)">
+        <label>ชื่อผู้รับ<input id="customerName" required placeholder="กรอกชื่อ-นามสกุล"></label>
+        <label>เบอร์โทรศัพท์<input id="customerPhone" required type="tel" placeholder="กรอกเบอร์โทรศัพท์"></label>
+        <label>ที่อยู่จัดส่ง<input id="customerAddress" required placeholder="บ้านเลขที่ ถนน แขวง/ตำบล จังหวัด"></label>
+        <button class="primary" type="submit">ยืนยันคำสั่งซื้อ (ตัวอย่าง)</button>
+      </form>
+      <p class="notice">หมายเหตุ: หน้านี้เป็นตัวอย่างสำหรับงานเรียน ยังไม่เชื่อมต่อระบบชำระเงินหรือบันทึกออเดอร์ลง Google Sheets</p>
+    </div>
+  </div>
+
+  <script>
+    const products = {
+      'HN-001': { name: 'น้ำผึ้งดอกไม้ป่า 500 กรัม', price: 159 },
+      'HN-002': { name: 'น้ำผึ้งดอกลำไย 500 กรัม', price: 189 }
+    };
+    const cart = {};
+    const money = n => '฿' + n.toLocaleString('th-TH');
+    function addToCart(sku) {
+      cart[sku] = (cart[sku] || 0) + 1;
+      updateCart();
+      const count = Object.values(cart).reduce((a,b) => a+b, 0);
+      document.getElementById('cartCount').textContent = count;
+    }
+    function updateCart() {
+      const items = document.getElementById('cartItems');
+      const skus = Object.keys(cart).filter(sku => cart[sku] > 0);
+      if (!skus.length) { items.innerHTML = '<div class="empty">ยังไม่มีสินค้าในตะกร้า</div>'; }
+      else {
+        items.innerHTML = skus.map(sku => `
+          <div class="cart-line">
+            <div><strong>${products[sku].name}</strong><small>${sku} · ${money(products[sku].price)} / ชิ้น</small></div>
+            <div class="qty"><button type="button" onclick="changeQty('${sku}',-1)">−</button><strong>${cart[sku]}</strong><button type="button" onclick="changeQty('${sku}',1)">+</button></div>
+          </div>`).join('');
+      }
+      const total = skus.reduce((sum,sku) => sum + products[sku].price * cart[sku], 0);
+      document.getElementById('cartTotal').textContent = money(total);
+      document.getElementById('cartCount').textContent = skus.reduce((sum,sku) => sum + cart[sku], 0);
+    }
+    function changeQty(sku, amount) { cart[sku] = Math.max(0, (cart[sku] || 0) + amount); updateCart(); }
+    function openCart() { updateCart(); document.getElementById('cartModal').classList.add('show'); }
+    function closeCart() { document.getElementById('cartModal').classList.remove('show'); }
+    function backdropClose(event) { if (event.target.id === 'cartModal') closeCart(); }
+    function placeOrder(event) {
+      event.preventDefault();
+      if (!Object.values(cart).some(q => q > 0)) { alert('กรุณาเลือกสินค้าก่อนยืนยันคำสั่งซื้อ'); return; }
+      const name = document.getElementById('customerName').value.trim();
+      const order = Object.keys(cart).filter(sku => cart[sku] > 0)
+        .map(sku => `${products[sku].name} x ${cart[sku]}`).join('\\n');
+      alert(`ขอบคุณคุณ ${name}\\n\\nรายการสั่งซื้อ:\\n${order}\\n\\nนี่เป็นการสาธิตหน้าเว็บ ยังไม่ได้ส่งคำสั่งซื้อจริง`);
+      Object.keys(cart).forEach(sku => cart[sku] = 0);
+      event.target.reset(); updateCart(); closeCart();
+    }
+    updateCart();
+  </script>
+</body>
+</html>
